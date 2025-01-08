@@ -45,8 +45,7 @@
     public boolean follows(String name) {
         if (name == null) return false;
         for (int i=0 ; i<this.fCount; i++){
-            if (name.equalsIgnoreCase(this.follows[i])){
-                return true;
+            if (this.follows[i] != null && this.follows[i].equalsIgnoreCase(name)) {                return true;
             }
         }
         return false;
