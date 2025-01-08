@@ -57,18 +57,20 @@
             System.out.println("\nCan't follow a null user");
             return false;
         }
-        if (fCount == maxfCount) {
+        if (fCount >= maxfCount) {
             System.out.println("\n...Can't add " + name + " to the follows list... ");
             return false;
         }
-        if (follows(name)) {
-            System.out.println("\n...Can't add " + name + "  - already in the the follows list... ");
-            return false;
+        for (int i = 0; i < fCount; i++) {
+            if (follows[i] != null && follows[i].equalsIgnoreCase(name)) {
+                System.out.println(name + " is already followed by " + this.getName());
+                return false;
+            }
         }
-        System.out.println("\n...Adding " + name + " to the follows list...");
         follows[fCount] = name;
         fCount++;
         return true;
+    
     }
 
 
