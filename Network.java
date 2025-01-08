@@ -45,8 +45,10 @@ public class Network {
         if (userCount<= users.length || getUser(name)!=null){
             return false;
         }
-        users[userCount++] = new User(name);
-        return false;
+        this.users[this.userCount]= new User(name);
+        this.userCount++;
+
+        return true;
     }
 
     /** Makes the user with name1 follow the user with name2. If successful, returns true.
@@ -93,7 +95,6 @@ public class Network {
             }
             
         }
-        //// Replace the following statement with your code
         return mostPopular;
     }
 
