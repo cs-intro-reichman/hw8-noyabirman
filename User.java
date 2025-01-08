@@ -57,7 +57,7 @@
         if (name== null) return false;
         if (fCount == maxfCount || follows(name)) return false;
         follows[fCount]= name;
-        this.fCount++;
+        fCount++;
         return true;
     }
 
