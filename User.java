@@ -55,18 +55,23 @@
      *  If this user already follows the given name, or if the follows list is full, does nothing and returns false; */
     public boolean addFollowee(String name) {
         if (name == null) {
+            System.out.println("\nCan't follow a null user");
             return false;
         }
         if (fCount == maxfCount) {
+            System.out.println("\n...Can't add " + name + " to the follows list... ");
             return false;
         }
         if (follows(name)) {
+            System.out.println("\n...Can't add " + name + "  - already in the the follows list... ");
             return false;
         }
+        System.out.println("\n...Adding " + name + " to the follows list...");
         follows[fCount] = name;
         fCount++;
         return true;
     }
+
 
 
     /** Removes the given name from the follows list of this user. If successful, returns true.
