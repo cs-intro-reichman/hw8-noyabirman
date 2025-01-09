@@ -86,12 +86,20 @@ public class Network {
     /** Computes and returns the name of the most popular user in this network: 
      *  The user who appears the most in the follow lists of all the users. */
     public String mostPopularUser() {
-        int maxFollowees= 0;
+        if (userCount == 0) return null;
         String mostPopular= null;
+        int maxFollowees= 0;
         for (int i=0 ; i<userCount; i++){
-            if (mostPopular== null || followeeCount(users[i].getName())>maxFollowees){
+            int followees = 0;
+            for (int j = 0; j < userCount; j++) {
+                if (i != j && users[j].follows(users[i].getName())) {
+                    followees++;
+                }
+            }
+
+            if (followees>maxFollowees){
                 mostPopular=users[i].getName();
-                maxFollowees=followeeCount(users[i].getName());
+                maxFollowees=followees;
             }
             
         }
@@ -113,7 +121,7 @@ public class Network {
     public String toString() {
         String s= "Network:";
         for (int i =0 ; i<userCount ; i++){
-            s =s+  "\n"+  users[i].getName()+ " -> ";
+            s +=  "\n"+  users[i].toString();
         }
         return s;
     }
