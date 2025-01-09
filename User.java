@@ -54,16 +54,13 @@
      *  If this user already follows the given name, or if the follows list is full, does nothing and returns false; */
     public boolean addFollowee(String name) {
         if (name == null) {
-            System.out.println("\nCan't follow a null user");
             return false;
         }
         if (fCount >= maxfCount) {
-            System.out.println("\n...Can't add " + name + " to the follows list... ");
             return false;
         }
         for (int i = 0; i < fCount; i++) {
-            if (follows[i] != null && follows[i].equalsIgnoreCase(name)) {
-                System.out.println(name + " is already followed by " + this.getName());
+            if (follows[i].equals(name)){
                 return false;
             }
         }
