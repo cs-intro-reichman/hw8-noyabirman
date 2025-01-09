@@ -56,13 +56,11 @@
         if (name == null) {
             return false;
         }
-        if (fCount >= maxfCount) {
+        if (fCount == maxfCount) {
             return false;
         }
-        for (int i = 0; i < fCount; i++) {
-            if (follows[i].equals(name)){
-                return false;
-            }
+        if (follows(name)) {
+            return false;
         }
         follows[fCount] = name;
         fCount++;
